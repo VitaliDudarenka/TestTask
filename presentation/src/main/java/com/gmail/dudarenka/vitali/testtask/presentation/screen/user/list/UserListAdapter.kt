@@ -9,6 +9,7 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.gmail.dudarenka.vitali.domain.entity.User
 import com.gmail.dudarenka.vitali.testtask.R
+import android.text.method.TextKeyListener.clear
 
 
 class UserListAdapter : RecyclerView.Adapter<UserListAdapter.Holder>() {
@@ -66,5 +67,11 @@ class UserListAdapter : RecyclerView.Adapter<UserListAdapter.Holder>() {
         }
         return id
     }
+
+    fun clear() {
+        listData!!.clear()
+        notifyDataSetChanged()
+    }
+
 
 }

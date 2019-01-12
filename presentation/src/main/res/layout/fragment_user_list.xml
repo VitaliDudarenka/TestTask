@@ -14,16 +14,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/listRecyclerView"
-            android:layout_width="360dp"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:visibility="@{!viewModel.isProgressEnabled}" />
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipeContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/listRecyclerView"
+                android:layout_width="360dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:visibility="@{!viewModel.isProgressEnabled}" />
+        </android.support.v4.widget.SwipeRefreshLayout>
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -35,10 +41,11 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/listRecyclerView"
-            app:layout_constraintStart_toStartOf="@+id/listRecyclerView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.888"
             app:visibility="@{viewModel.isProgressEnabled}" />
     </android.support.constraint.ConstraintLayout>
+
 </layout>

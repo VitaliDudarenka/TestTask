@@ -2,6 +2,7 @@ package com.gmail.dudarenka.vitali.testtask.presentation.screen.user.list
 
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.View
@@ -34,10 +35,16 @@ class UserListFragment : BaseMvvmFragment<UserListViewModel, UserRouter, Fragmen
         binding.listRecyclerView.setHasFixedSize(true)
         binding.listRecyclerView.addOnScrollListener(object : EndlessRecyclerOnScrollListener(layoutManager!!) {
             override fun onLoadMore() {
-                viewModel.loadMore()
+                viewModel.loadItems()
             }
         })
+
+        val swipeContainer: SwipeRefreshLayout = view.findViewById(R.id.swipeContainer)
+        swipeContainer.setOnRefreshListener {
+            viewModel.adapter!!.clear()
+            viewModel.loadItems()
+            swipeContainer.isRefreshing = false
+        }
+
     }
-
-
 }
