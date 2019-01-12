@@ -1,6 +1,8 @@
 package com.gmail.dudarenka.vitali.data.net
 
+import com.gmail.dudarenka.vitali.data.entity.UserResponse
 import com.google.gson.GsonBuilder
+import io.reactivex.Observable
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -27,6 +29,12 @@ class RestService(private val apiUrl: String) {
                 .build()
         restApi = retrofit.create(RestApi::class.java)
     }
+    fun getUsers(): Observable<List<UserResponse>> {
+        return restApi.getUsers()
+    }
 
+    fun getUserByLogin(login: String): Observable<UserResponse> {
+        return restApi.getUserByLogin(login)
+    }
 
 }

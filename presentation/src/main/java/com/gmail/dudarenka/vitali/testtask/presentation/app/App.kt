@@ -4,6 +4,7 @@ import android.app.Application
 import android.support.v7.app.AppCompatDelegate
 import com.gmail.dudarenka.vitali.testtask.presentation.inject.AppComponent
 import com.gmail.dudarenka.vitali.testtask.presentation.inject.AppModule
+import com.gmail.dudarenka.vitali.testtask.presentation.inject.DaggerAppComponent
 
 
 class App : Application() {

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.gmail.dudarenka.vitali.testtask.presentation.screen.user.details.UserDetailsViewModel" />
+    </data>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingBottom="20dp">
+
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="113dp"
+            android:layout_height="113dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:imageUrl="@{viewModel.avatarUrl}"/>
+
+        <TextView
+            android:id="@+id/nameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="12dp"
+            android:text="@{viewModel.name}"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+        <TextView
+            android:id="@+id/emailTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@{@string/email+` `+viewModel.email}"
+            app:layout_constraintStart_toStartOf="@+id/imageView"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+        <TextView
+            android:id="@+id/organizationTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@{@string/organization+` `+viewModel.organization}"
+            app:layout_constraintStart_toStartOf="@+id/emailTextView"
+            app:layout_constraintTop_toBottomOf="@+id/emailTextView" />
+
+        <TextView
+            android:id="@+id/followingTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@{@string/following+` `+viewModel.following}"
+            app:layout_constraintStart_toStartOf="@+id/organizationTextView"
+            app:layout_constraintTop_toBottomOf="@+id/organizationTextView" />
+
+        <TextView
+            android:id="@+id/followersTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@{@string/followers+` `+viewModel.followers}"
+            app:layout_constraintStart_toStartOf="@+id/followingTextView"
+            app:layout_constraintTop_toBottomOf="@+id/followingTextView" />
+
+        <TextView
+            android:id="@+id/dateTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@{@string/date+` `+viewModel.date}"
+            app:layout_constraintStart_toStartOf="@+id/followersTextView"
+            app:layout_constraintTop_toBottomOf="@+id/followersTextView" />
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="28dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.888"
+            app:visibility="@{viewModel.isProgressEnabled}" />
+    </android.support.constraint.ConstraintLayout>
+</layout>
