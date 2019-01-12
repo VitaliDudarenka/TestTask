@@ -14,4 +14,4 @@ This module contains the logic to configure the application user interface and a
 RxJava Retrofit OkHttp Glide Dagger2 ConstraintLayout RecyclerView 
 
 # Download
-To download this project click "Cone or download" button, then click "downloadZip" or copy the project link. If you have installed GitHub client you may click "Open in Desctop".
+To download this project click "Cone or download" button, then click "downloadZip" or copy the project link. If you have installed GitHub client you may click "Open in Desktop".
