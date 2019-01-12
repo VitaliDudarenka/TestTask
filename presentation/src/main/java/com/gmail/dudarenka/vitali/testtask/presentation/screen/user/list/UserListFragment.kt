@@ -3,6 +3,7 @@ package com.gmail.dudarenka.vitali.testtask.presentation.screen.user.list
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.View
 import com.gmail.dudarenka.vitali.testtask.R
 import com.gmail.dudarenka.vitali.testtask.databinding.FragmentUserListBinding
@@ -11,6 +12,8 @@ import com.gmail.dudarenka.vitali.testtask.presentation.screen.user.UserRouter
 
 
 class UserListFragment : BaseMvvmFragment<UserListViewModel, UserRouter, FragmentUserListBinding>() {
+    private var layoutManager: LinearLayoutManager? = null
+
     companion object {
         fun getInstance(): UserListFragment {
             return UserListFragment()
@@ -26,10 +29,15 @@ class UserListFragment : BaseMvvmFragment<UserListViewModel, UserRouter, Fragmen
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.listRecyclerView.adapter = viewModel.adapter
-        binding.listRecyclerView.layoutManager = LinearLayoutManager(context)
+        layoutManager = LinearLayoutManager(context)
+        binding.listRecyclerView.layoutManager = layoutManager
         binding.listRecyclerView.setHasFixedSize(true)
+        binding.listRecyclerView.addOnScrollListener(object : EndlessRecyclerOnScrollListener(layoutManager!!) {
+            override fun onLoadMore() {
+                viewModel.loadMore()
+            }
+        })
     }
-
 
 
 }

@@ -7,10 +7,10 @@ import io.reactivex.Observable
 import javax.inject.Inject
 
 class GetUsersUseCase @Inject constructor(postExecutorThread: PostExecutorThread,
-                                              private val userRepository: UserRepository) : BaseUseCase(postExecutorThread) {
+                                          private val userRepository: UserRepository) : BaseUseCase(postExecutorThread) {
 
-    fun get(): Observable<List<User>> {
-        return userRepository.get().observeOn(postExecutorThread).subscribeOn(workExecutorThread)
+    fun get(count: Int): Observable<List<User>> {
+        return userRepository.get(count).observeOn(postExecutorThread).subscribeOn(workExecutorThread)
     }
 
 }

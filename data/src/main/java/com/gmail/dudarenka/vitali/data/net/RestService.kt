@@ -29,8 +29,9 @@ class RestService(private val apiUrl: String) {
                 .build()
         restApi = retrofit.create(RestApi::class.java)
     }
-    fun getUsers(): Observable<List<UserResponse>> {
-        return restApi.getUsers()
+
+    fun getUsers(count: Int): Observable<List<UserResponse>> {
+        return restApi.getUsers(count.toString())
     }
 
     fun getUserByLogin(login: String): Observable<UserResponse> {

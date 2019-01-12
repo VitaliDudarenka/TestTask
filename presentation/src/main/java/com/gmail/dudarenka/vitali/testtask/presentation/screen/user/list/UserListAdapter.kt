@@ -58,5 +58,13 @@ class UserListAdapter : RecyclerView.Adapter<UserListAdapter.Holder>() {
         fun onItemClick(user: User)
     }
 
+    fun getLastId(): Int {
+        var id = 0
+        for (user in this.listData!!) {
+            if (user.id.toInt() > id)
+                id = user.id.toInt()
+        }
+        return id
+    }
 
 }

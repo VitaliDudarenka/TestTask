@@ -8,8 +8,8 @@ import io.reactivex.Observable
 
 class UserRepositoryImpl(private val apiService: RestService) : UserRepository {
 
-    override fun get(): Observable<List<User>> {
-        return apiService.getUsers().map {
+    override fun get(count: Int): Observable<List<User>> {
+        return apiService.getUsers(count).map {
             it.map {
                 it.transformToDomain()
             }

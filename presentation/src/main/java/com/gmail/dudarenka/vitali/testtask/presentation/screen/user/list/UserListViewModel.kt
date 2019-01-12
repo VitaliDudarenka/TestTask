@@ -1,6 +1,7 @@
 package com.gmail.dudarenka.vitali.testtask.presentation.screen.user.list
 
 import android.databinding.ObservableBoolean
+import android.util.Log
 import com.gmail.dudarenka.vitali.domain.entity.User
 import com.gmail.dudarenka.vitali.domain.usecases.GetUsersUseCase
 import com.gmail.dudarenka.vitali.testtask.presentation.app.App
@@ -18,7 +19,7 @@ class UserListViewModel : BaseViewModel<UserRouter>() {
     init {
         App.appComponent.inject(this)
         isProgressEnabled.set(true)
-        val disposable = getUsersUseCase.get().subscribeBy(
+        val disposable = getUsersUseCase.get(0).subscribeBy(
                 onNext = {
                     adapter?.listData = it.toMutableList()
                     isProgressEnabled.set(false)
@@ -34,6 +35,25 @@ class UserListViewModel : BaseViewModel<UserRouter>() {
                 router!!.goToUserDetails(user.login)
             }
         }
+
+    }
+
+    fun loadMore() {
+        Log.e("BBB", adapter!!.getLastId().toString())
+        App.appComponent.inject(this)
+        isProgressEnabled.set(true)
+        val disposable = getUsersUseCase.get(adapter!!.getLastId()).subscribeBy(
+                onNext = {
+                    adapter?.listData!!.addAll(it.toMutableList())
+                    adapter!!.notifyDataSetChanged()
+                    isProgressEnabled.set(false)
+                },
+                onError = {
+                    isProgressEnabled.set(false)
+                    router?.showError(it)
+                }
+        )
+        addToDisposable(disposable)
     }
 
 }

@@ -4,6 +4,6 @@ import com.gmail.dudarenka.vitali.domain.entity.User
 import io.reactivex.Observable
 
 interface UserRepository : BaseRepository {
-    fun get(): Observable<List<User>>
+    fun get(count: Int): Observable<List<User>>
     fun getByLogin(login: String): Observable<User>
 }
