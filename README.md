@@ -1,5 +1,5 @@
 # TestTask
-The application shows the list GitHub users, users details (by clicking on item). Also there is implemented pull-to-refresh and pagination. The app uses GitHub API. There is used clean architecture, consists of 3 modules: domain, data, presentation.
+The application shows the list of GitHub users, users details (by clicking on item). Also there is implemented pull-to-refresh and pagination. The app uses GitHub API. There is used clean architecture, consists of 3 modules: domain, data, presentation.
 
 # Domain module
 Independent layer, it contains only business logic - no dependencies from Android SDK, other modules or libs , except RxJava. Here we have interfaces that should be implemented in other modules.
